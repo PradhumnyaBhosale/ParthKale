@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { motion } from 'framer-motion';
 
 const Skills = () => {
@@ -8,7 +8,7 @@ const Skills = () => {
   useEffect(() => {
     const fetchCerts = async () => {
       try {
-        const res = await axios.get('/api/certifications');
+        const res = await API.get('/api/certifications');
         if (res.data.success) {
           setCertifications(res.data.data);
         }

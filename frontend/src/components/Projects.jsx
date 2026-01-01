@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaTimes } from 'react-icons/fa';
 
@@ -16,9 +16,7 @@ const Projects = () => {
     // Fetch projects from backend
     const fetchProjects = async () => {
       try {
-        // Using relative path assuming proxy or direct url in dev
-        // For now hardcoding localhost
-        const res = await axios.get('/api/projects');
+        const res = await API.get('/api/projects');
         if (res.data.success) {
           setProjects(res.data.data);
           setFilteredProjects(res.data.data);

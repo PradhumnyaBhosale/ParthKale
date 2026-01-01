@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPaperPlane, FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 
@@ -32,7 +32,7 @@ const Contact = () => {
     setStatus('loading');
     
     try {
-      const res = await axios.post('/api/contact', formData);
+      const res = await API.post('/api/contact', formData);
       if (res.data.success) {
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });

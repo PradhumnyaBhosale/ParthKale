@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaRobot, FaPaperPlane, FaTimes, FaMinus, FaCommentDots } from 'react-icons/fa';
 
@@ -30,7 +30,7 @@ const Chatbot = () => {
     setIsTyping(true);
 
     try {
-      const res = await axios.post('/api/chat', { message: input });
+      const res = await API.post('/api/chat', { message: input });
       
       const botMessage = { 
         id: Date.now() + 1, 
